@@ -1,7 +1,7 @@
 export interface ProductI {
     name: string;
     price: number;
-    $key?: string;
+    key?: string;
 }
 
 export interface CustomProductEvent {

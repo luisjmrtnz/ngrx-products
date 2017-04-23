@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'product-list',
@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 
 export class ProductListComponent {
     @Input() products;
+    @Output() action = new EventEmitter();
 }

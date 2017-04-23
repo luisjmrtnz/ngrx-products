@@ -1,6 +1,7 @@
 <ul class="list-group">
   <li class="list-group-item justify-content-between"
-    *ngFor="let product of products">
+    *ngFor="let product of products"
+    (click)="action.emit(product)">
         {{ product.name }}
     <span class="badge badge-default badge-pill"> Price: {{ product.price }}</span>
   </li>

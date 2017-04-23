@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
-import { ProductService } from '../providers';
-import { ProductI } from '../models';
+import { Observable } from 'rxjs/Observable';
+import { ProductI, AppStateI } from '../models';
+import { ProductActions } from '../actions';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +11,21 @@ import { ProductI } from '../models';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  products: ProductI[];
+  products: Observable<ProductI[]>;
 
-  constructor(private ps: ProductService){}
+  constructor(
+    private store: Store<AppStateI>,
+    private productActions: ProductActions){}
 
   ngOnInit() {
-    this.ps.getAll().subscribe(products => this.products = products);
+    this.products = this.store.select(state => state.products);
   }
 
-  onAdd(p: ProductI) {
-    this.ps.add(p).catch(a => console.log(a));
+  onAdd(x: ProductI) {
+    this.store.dispatch(this.productActions.addProduct(x));
+  }
+
+  onRemove(x: ProductI) {
+    this.store.dispatch(this.productActions.deleteProduct(x));
   }
 }

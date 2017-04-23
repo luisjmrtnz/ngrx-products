@@ -10,7 +10,7 @@ import { ProductI, CustomProductEvent } from '../models';
 
 export const prodTrans = (prod) => {
     let prodT: ProductI = prod.val();
-    prodT.$key = prod.$key;
+    prodT.key = prod.key;
     return prodT;
 };
 
@@ -28,7 +28,7 @@ export class ProductService {
         this.fb = this.af.database.list('/products');
         this.fb.$ref.ref.on('child_added', (x) => { this.fbEvents.next({ product: prodTrans(x), event: 'child_added'})});
         this.fb.$ref.ref.on('child_changed', (x) => { this.fbEvents.next({ product: prodTrans(x), event: 'child_changed'})});
-        this.fb.$ref.ref.on('child_changed', (x) => { this.fbEvents.next({ product: prodTrans(x), event: 'child_changed'})});
+        this.fb.$ref.ref.on('child_removed', (x) => { this.fbEvents.next({ product: prodTrans(x), event: 'child_removed'})});
     }
 
     add(product: ProductI){
@@ -36,15 +36,15 @@ export class ProductService {
     }
 
     update(product: ProductI) {
-        return this.fb.update(product.$key, product);
+        return this.fb.update(product.key, product);
     }
 
     remove(product: ProductI)  {
-        return this.fb.remove(product.$key);
+        return this.fb.remove(product.key);
     }
 
     getAll() {
-        return this.fb;
+        return this.fb.take(1);
     }
 
     getChanges(): Observable<CustomProductEvent> {
