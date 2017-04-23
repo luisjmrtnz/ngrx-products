@@ -1,0 +1,15 @@
+<div>
+    <h2> Add a new Product </h2>
+</div>
+<div>
+    <label>Name: </label>
+    <input type="text" [(ngModel)]="newProduct.name">
+</div>
+
+<div>
+    <label>Price: </label>
+    <input type="text" [(ngModel)]="newProduct.price">
+</div>
+<div>
+    <button (click)="add()">Add</button>
+</div>
