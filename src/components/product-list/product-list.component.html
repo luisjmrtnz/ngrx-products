@@ -1,5 +1,7 @@
-<ul>
-    <li *ngFor="let product of products">
-        {{ product | json }}
-    </li>
+<ul class="list-group">
+  <li class="list-group-item justify-content-between"
+    *ngFor="let product of products">
+        {{ product.name }}
+    <span class="badge badge-default badge-pill"> Price: {{ product.price }}</span>
+  </li>
 </ul>
