@@ -1,5 +1,8 @@
 # NgrxProducts
 
+Basic App built with Angular, Angularfire2 and @ngrx/store. 
+Base on this https://github.com/gmarcos87/ionic2-ngrxstore-angularfire2, but with some fixes that I found on the way...
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
