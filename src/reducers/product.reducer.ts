@@ -7,8 +7,8 @@ import { ProductI } from '../models';
 export function productReducer(state: ProductI[] = [], action: Action) {
     if(action && action.type){            
         switch(action.type) {
-            case ProductActions.LOAD_PRODUCT_SUCCESS:
-                return action.payload;
+            case ProductActions.FETCH_PRODUCTS_SUCCESS:
+                return action.payload || [];
             case ProductActions.UPDATE_PRODUCT_SUCCESS:
                 var exists = state.find(product => product.key === action.payload.key);               
                 if (exists) {

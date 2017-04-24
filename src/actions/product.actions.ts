@@ -14,6 +14,13 @@ export class ProductActions {
         };
     }
 
+    static FETCH_PRODUCTS = 'FETCH_PRODUCT';
+    fetchProducts(): Action {
+        return {
+            type: ProductActions.FETCH_PRODUCTS
+        };
+    }
+
     static UPDATE_PRODUCT = 'UPDATE_PRODUCT';
     updateProduct(product: ProductI): Action {
         return {
@@ -30,11 +37,11 @@ export class ProductActions {
         };
     }
 
-    static LOAD_PRODUCT_SUCCESS = 'LOAD_PRODUCT_SUCCESS';
-    LoadProductSucess(product: ProductI): Action {
+    static FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCT_SUCCESS';
+    fetchProductsSuccess(products: ProductI[] ): Action {
         return {
-            type: ProductActions.LOAD_PRODUCT_SUCCESS,
-            payload: product
+            type: ProductActions.FETCH_PRODUCTS_SUCCESS,
+            payload: products
         };
     }
 

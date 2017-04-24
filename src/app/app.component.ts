@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
     private productActions: ProductActions){}
 
   ngOnInit() {
+    this.store.dispatch(this.productActions.fetchProducts());
     this.products = this.store.select(state => state.products);
   }
 
